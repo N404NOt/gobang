@@ -1,0 +1,30 @@
+/* 公共的样式 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    background-image: url(../image/mind.png);
+    /* 不平铺 */
+    background-repeat: no-repeat; 
+    /* 垂直水平居中 */
+    background-position: center;
+    /* 拉伸把桌面铺满 */
+    background-size: cover;
+}
+
+.nav {
+    height: 50px;
+
+    background-color: rgb(50,50,50);
+    color: white;
+
+    /* 垂直居中文字，居中的50/2 */
+    line-height: 50px;
+    /* 左边的间距 */
+    padding-left: 20px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <div class = "nav">
+        五子棋对战
+    </div>
+    <div class="login-container">
+        <!-- 登录界面的对话框 -->
+        <div class="login-dialog">
+            <!-- 提示信息 -->
+            <h2>登录</h2>
+            <!-- 这个表示一行 -->
+            <div class="row">
+                <span>用户名</span>
+                <input type="text" id ="username">
+            </div>
+            <!-- 另一行 -->
+            <div class="row">
+                <span>密码</span>
+                <input type="password" id="password">
+            </div>
+            <div class="row">
+                <button id="submit">登入</button>
+            </div>
+        </div>
+    </div> 
+
+    <script>
+        let usernameInput = document.querySelector('#username');
+        let passwordInput = document.querySelector('#password');
+        let submitButton = document.querySelector('#submit');
+        console.log("js ok");
+        submitButton.onclick = function() {
+            $.ajax({
+                type: 'post',
+                url: '/login',
+                data: {
+                    username: usernameInput.value,
+                    password: passwordInput.value,
+                },
+                success:function(body) {
+                    alert("成功");
+                }
+            })
+        }
+    </script>
+</body>
+</html>
