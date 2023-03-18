@@ -48,8 +48,19 @@
                     password: passwordInput.value,
                 },
                 success:function(body) {
-                    alert("成功");
-                }
+                    // 请求执行成功之后的回调函数
+                    // 判定当前是否登录成功
+                    // 如果登录成功，服务器会返回当前的User对象
+                    // 如果登录失败，服务器返回一个空的User对象
+                    if(body && body.userId > 0) {
+                        alert("登录成功！");
+                        location.assign('/game_hall.html');
+                    }
+                    
+                },
+                error: function() {
+                        alert("登录失败！");
+                    }
             })
         }
     </script>

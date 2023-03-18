@@ -28,3 +28,6 @@ html,body {
     /* 左边的间距 */
     padding-left: 20px;
 }
+input {
+    color: green;
+}
