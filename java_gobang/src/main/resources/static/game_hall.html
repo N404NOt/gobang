@@ -59,6 +59,8 @@
         // 处理服务器返回的响应数据，这个响应针对“开始匹配”/"结束匹配"
         // JSON对象转换成JS对象， JSON.parse , JS对象转成JSON字符串 JSON.stringify
         let resp = JSON.parse(e.data);
+        let matchButton = document.querySelector('#match-button');
+        console.log("resp.message:  " + resp.message);
         if(!resp.ok) {
             console.log("游戏大厅中接收到了失败响应！" + resp.reason);
             return;
@@ -75,6 +77,9 @@
             // 已经匹配到对手了
             console.log("匹配到对手！进入游戏房间");
             location.assign("/game_room.html")
+        } else if (resp.message == 'repeatConnection') {
+            alert('当前检测到多开! 请使用其他账号登录');
+            location.assign("/login.html");
         } else {
             console.log("接收到非法响应! message: " +e.message);
         }

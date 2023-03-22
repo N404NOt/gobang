@@ -1,5 +1,6 @@
 package com.example.gobang.config;
 
+import com.example.gobang.api.GameAPI;
 import com.example.gobang.api.MatchAPI;
 import com.example.gobang.api.TestAPI;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,17 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Autowired
     private MatchAPI matchAPI;
+
+    @Autowired
+    private GameAPI gameAPI;
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 //        registry.addHandler(new TestAPI(),"test"); //注册添加websocket处理器，然后使用TestAPI中的方法
         registry.addHandler(testAPI,"/test"); //Spring写法,//test是路径，和这个关联起来
         registry.addHandler(matchAPI,"/findMatch").addInterceptors
                 (new HttpSessionHandshakeInterceptor());
+        registry.addHandler(gameAPI,"/game").addInterceptors(new HttpSessionHandshakeInterceptor());
+
     }
 
 }
