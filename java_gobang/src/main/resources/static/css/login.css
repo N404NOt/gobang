@@ -23,7 +23,7 @@
     text-align: center;
     /* 设置内边距，上下50 */
     padding: 50px 0;
-    color: rgb(252,82,124);
+    color: rgb(20, 132, 84);
     font-family:'微软雅黑';
     text-shadow: 0 0px 6px #66FF99 /*设置文字阴影*/
 }
@@ -60,9 +60,11 @@
     border: none;
     /* 去掉选择时候的轮廓线 */
     outline: none;
-    border-radius: 50pxs;
+    border-radius: 60px;
     font-family:'华文琥珀';
-    text-shadow: 0 0px 7px #423940 /*设置文字阴影*/
+    text-shadow: 0 0px 7px #423940; /*设置文字阴影*/
+    margin-top: 7px;
+
     
 }
 
@@ -71,7 +73,36 @@
     height: 50px;
     font-family:'微软雅黑';
 
-    background-color: rgb(252,82,124);
+    background-color: rgb(49, 67, 66);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 100px;
+
+    /* 距离上方高度 */
+    margin-top: 10px;
+    /* 点击下去有3秒渐变 */
+    transition: .3s;
+    margin-right: 5px;
+}
+
+#submit:active {
+    /* 点击后反应 */
+    background-color: 49, 67, 66;
+    
+
+    /* 透明度 */
+    opacity: 0.4;
+  transition: 0s;
+    
+}
+
+#register {
+    width: 300px;
+    height: 50px;
+    font-family:'微软雅黑';
+
+    background-color: rgb(49, 67, 66);
     color: white;
     border: none;
     outline: none;
@@ -83,7 +114,7 @@
     transition: .3s;
 }
 
-#submit:active {
+#register:active {
     /* 点击后反应 */
     background-color: #47062e;
     

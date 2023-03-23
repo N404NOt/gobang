@@ -57,8 +57,11 @@ public class UserAPI {
         try {
             HttpSession session = request.getSession(false);
             User user = (User) session.getAttribute("user");  // getAttribute 是Object类型所以强转型
-            System.out.println(request);
-            return user;
+
+            // 拿着这个 user 对象，去数据库中找，找到最新的数据
+            User newUser = userMapper.selectByName(user.getUsername());
+//            System.out.println(request);
+            return newUser;
         }catch (NullPointerException e) {
             return new User();
         }

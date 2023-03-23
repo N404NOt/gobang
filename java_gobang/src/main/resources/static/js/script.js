@@ -50,7 +50,7 @@ websocket.onmessage = function(event) {
     if (!resp.ok) {
         alert("连接游戏失败! reason: " + resp.reason);
         // 如果出现连接失败的情况, 回到游戏大厅
-        location.assign("/game_hall.html");
+        location.replace("/game_hall.html");
         return;
     }
 
@@ -66,7 +66,7 @@ websocket.onmessage = function(event) {
         setScreenText(gameInfo.isWhite);
     } else if (resp.message == 'repeatConnection') {
         alert("检测到游戏多开! 请使用其他账号登录!");
-        location.assign("/login.html");
+        location.replace("/login.html");
     }
 }
 
@@ -88,10 +88,10 @@ function initGame() {
     }
     let chess = document.querySelector('#chess');
     let context = chess.getContext('2d');
-    context.strokeStyle = "#BFBFBF";
+    context.strokeStyle = "#C5C5A8";
     // 背景图片
     let logo = new Image();
-    logo.src = "image/brain.jpg";
+    logo.src = "image/傻子.jpg";
     logo.onload = function () {
         context.drawImage(logo, 0, 0, 450, 450);
         initChessBoard();

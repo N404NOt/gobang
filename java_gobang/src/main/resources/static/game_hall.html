@@ -7,9 +7,13 @@
     <title>游戏大厅</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/game_hall.css">
+    <audio autoplay="autoplay" loop="loop" controls="controls"><source src="music/兰亭鸡序.mp3" type="audio/mp3"></audio>
+
+    
+
 </head>
 <body>
-    <div class="nav"> 五子棋对战</div>
+    <div class="nav"> 五🐓棋对战</div>
     <!-- 整个界面的容器元素 -->
     <div class="container">
     <!-- 这个div 在 container中处于水平居中这样的位置 -->
@@ -39,7 +43,8 @@
     });
 
     // 此处进行初始化 websocket,并且实现前端的匹配逻辑
-    let websocket = new WebSocket('ws://127.0.0.1:8080/findMatch');
+    let webSocketUrl = "ws://" + location.host + "/findMatch";
+    let websocket = new WebSocket(webSocketUrl);
     websocket.onopen = function() {
         console.log("onopen");
     }
@@ -76,10 +81,10 @@
         } else if(resp.message == 'matchSuccess') {
             // 已经匹配到对手了
             console.log("匹配到对手！进入游戏房间");
-            location.assign("/game_room.html")
+            location.replace("/game_room.html")
         } else if (resp.message == 'repeatConnection') {
             alert('当前检测到多开! 请使用其他账号登录');
-            location.assign("/login.html");
+            location.replace("/login.html");
         } else {
             console.log("接收到非法响应! message: " +e.message);
         }

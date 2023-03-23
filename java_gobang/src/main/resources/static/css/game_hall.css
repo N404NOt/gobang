@@ -1,4 +1,8 @@
+html,body {
+    height: 100%;
+    background-image: url(../image/333333.png);
 
+}
 
 #screen {
     width: 400px;

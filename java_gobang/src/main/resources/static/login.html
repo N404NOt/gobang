@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css">
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    
 </head>
 <body>
     <div class = "nav">
-        五子棋对战
+        暗藏玄机-五子棋对战
     </div>
     <div class="login-container">
         <!-- 登录界面的对话框 -->
@@ -30,6 +32,10 @@
             </div>
             <div class="row">
                 <button id="submit">登入</button>
+                <button id="register">注册</button>
+
+            </div>
+            <div class="row">
             </div>
         </div>
     </div> 
@@ -38,7 +44,11 @@
         let usernameInput = document.querySelector('#username');
         let passwordInput = document.querySelector('#password');
         let submitButton = document.querySelector('#submit');
+        let registerButton = document.querySelector('#register');
         console.log("js ok");
+        registerButton.onclick = function() {
+            location.replace('/register.html');
+        }
         submitButton.onclick = function() {
             $.ajax({
                 type: 'post',

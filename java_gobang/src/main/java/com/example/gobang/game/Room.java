@@ -1,6 +1,7 @@
 package com.example.gobang.game;
 
 import com.example.gobang.JavaGobangApplication;
+import com.example.gobang.mapper.UserMapper;
 import com.example.gobang.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,6 +39,8 @@ public class Room {
 
 //    @Autowired
     private RoomManager roomManager;
+
+    private UserMapper userMapper;
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -95,6 +98,11 @@ public class Room {
         if(response.getWinner() != 0) {
             // 胜负已分
             System.out.println("游戏结束！房间即将销毁！ roomId= " + roomId +"获胜方为：" + response.getWinner());
+            // 更新获胜方和失败方的信息
+            int winUserId = response.getWinner();
+            int loseUserId = response.getWinner() == user1.getUserId() ? user2.getUserId() : user1.getUserId();
+            userMapper.userWin(winUserId);
+            userMapper.userLose(loseUserId);
             // 销毁房间
             roomManager.remove(roomId,user1.getUserId(),user2.getUserId());
         }
@@ -130,7 +138,8 @@ public class Room {
                 if (board[row][c] == chess
                         && board[row][c + 1] == chess
                         && board[row][c + 2] == chess
-                        && board[row][c + 3] == chess) {
+                        && board[row][c + 3] == chess
+                        && board[row][c + 4] == chess){
                     // 构成了五子连珠! 胜负已分!
                     return chess == 1 ? user1.getUserId() : user2.getUserId();
 
@@ -233,5 +242,6 @@ public class Room {
         // 手动注入, 当前的 room 类应该是多例的所有不能用注入的的方式，想要引入单例的SpringBoot的实例只能通过手动注入的方式
         onlineUserManager = JavaGobangApplication.context.getBean(OnlineUserManager.class);
         roomManager = JavaGobangApplication.context.getBean(RoomManager.class);
+        userMapper = JavaGobangApplication.context.getBean(UserMapper.class);
     }
 }
