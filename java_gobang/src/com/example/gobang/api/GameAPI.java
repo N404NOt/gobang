@@ -69,7 +69,7 @@ public class GameAPI extends TextWebSocketHandler {
 
         // 5.把用户加入游戏房间中
         // 当前这个逻辑是在 game_room.html 页面中完成的
-        // 前面的创建房间/匹配过程，是在 game_hall.html 页面中完成的
+        // 前面的创建房间/匹配过程，是在 gane_hall.html 页面中完成的
         // 因此前面匹配到对手之后，需要经过页面跳转，来到 game_room.html 才算正式进入游戏房间
         // 执行到当前逻辑，说明玩家已经完成页面成功跳转！
         synchronized (room) {

@@ -1,0 +1,46 @@
+
+#screen {
+    width: 450px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: beige;
+    font-size: 22px;
+    line-height: 50px;
+    text-align: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;
+    background-image: url(../image/333333.png);
+
+}
+
+.nav {
+    height: 50px;
+
+    background-color: rgb(50,50,50);
+    color: white;
+
+    /* 垂直居中文字，居中的50/2 */
+    line-height: 50px;
+    /* 左边的间距 */
+    padding-left: 20px;
+}
+
+input {
+    color: green;
+}
+
+.container {
+    width: 100%;
+    height: calc(100% - 50px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
